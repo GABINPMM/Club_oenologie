@@ -1,0 +1,49 @@
+Nomenclature et dimensions recommandées pour les images du site du Club Œnologie d'Angers :
+
+1. logo.png
+   - Description : Logo officiel du club.
+   - Emplacement : En-tête (Header) à côté du titre.
+   - Format recommandé : PNG transparent (fond transparent).
+   - Dimensions idéales : Hauteur de 60px à 80px.
+
+2. wine_hero.png (Déjà présente dans le dossier)
+   - Description : Grande photo d'ambiance (dégustation de vin dans une cave).
+   - Emplacement : Section d'accueil (Hero Section) en arrière-plan.
+   - Format recommandé : JPEG ou PNG compressé.
+   - Dimensions idéales : 1920px x 1080px (16:9).
+
+3. map_angers.png
+   - Description : Plan d'accès pour le Local Associatif (14 Bd Jean Sauvage, Angers).
+   - Emplacement : Section "Qui Sommes-Nous", à côté de la photo d'activité.
+   - Format recommandé : PNG ou JPEG.
+   - Dimensions idéales : 600px x 400px (3:2).
+
+4. chateau_angers.png
+   - Description : Illustration pour les actualités estivales (Château d'Angers ou dégustation en extérieur).
+   - Emplacement : Section "En Bref", à côté du texte sur la pause estivale.
+   - Format recommandé : JPEG ou PNG.
+   - Dimensions idéales : 500px x 380px.
+
+5. club_tasting.png
+   - Description : Photo d'une séance de dégustation du club (verres, participants, ambiance).
+   - Emplacement : Section "Qui Sommes-Nous", à côté du plan d'accès.
+   - Format recommandé : JPEG ou PNG.
+   - Dimensions idéales : 600px x 400px (3:2).
+
+6. quality_bg.png
+   - Description : Image d'ambiance estompée en arrière-plan (fût, vignoble, verre, etc.).
+   - Emplacement : Arrière-plan de la section "Pourquoi nos cours se démarquent".
+   - Format recommandé : PNG ou JPEG (avec un effet estompé progressif).
+   - Dimensions idéales : ~500px x 500px.
+
+7. modules_bg.png
+   - Description : Image d'ambiance estompée en arrière-plan (raisins, bouteille, carafe, etc.).
+   - Emplacement : Arrière-plan de la section "Détail des modules".
+   - Format recommandé : PNG ou JPEG.
+   - Dimensions idéales : ~500px x 500px.
+
+8. formule_club.png
+   - Description : Photo ou illustration symbolisant l'esprit convivial, accessible et qualitatif du club.
+   - Emplacement : Section "Présentation du Club", juste sous le texte descriptif de la formule.
+   - Format recommandé : JPEG ou PNG.
+   - Dimensions idéales : 600px x 300px (2:1).
