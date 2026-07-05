@@ -276,4 +276,37 @@ document.addEventListener('DOMContentLoaded', () => {
             formStatus.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
     };
+
+    // ==========================================================================
+    // CONFIRMATION DE L'ÂGE (18 ANS)
+    // ==========================================================================
+    const ageModal = document.getElementById('age-verification-modal');
+    const ageVerifyYes = document.getElementById('age-verify-yes');
+    const ageVerifyNo = document.getElementById('age-verify-no');
+
+    if (ageModal) {
+        // Vérifier si le choix a déjà été enregistré dans localStorage
+        const isVerified = localStorage.getItem('age-verified') === 'true';
+
+        if (isVerified) {
+            ageModal.classList.add('hidden');
+        } else {
+            document.body.classList.add('modal-open');
+        }
+
+        if (ageVerifyYes) {
+            ageVerifyYes.addEventListener('click', () => {
+                localStorage.setItem('age-verified', 'true');
+                ageModal.classList.add('hidden');
+                document.body.classList.remove('modal-open');
+            });
+        }
+
+        if (ageVerifyNo) {
+            ageVerifyNo.addEventListener('click', () => {
+                // Rediriger vers Google si l'utilisateur est mineur
+                window.location.href = 'https://www.google.fr';
+            });
+        }
+    }
 });
