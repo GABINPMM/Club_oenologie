@@ -76,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // SCROLL REVEAL ANIMATIONS (Intersection Observer)
     // ==========================================================================
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
+    let observer = null;
 
     if ('IntersectionObserver' in window) {
         const observerOptions = {
@@ -84,11 +85,11 @@ document.addEventListener('DOMContentLoaded', () => {
             threshold: 0.1
         };
 
-        const observer = new IntersectionObserver((entries, observer) => {
+        observer = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('revealed');
-                    observer.unobserve(entry.target); // Animates only once
+                    obs.unobserve(entry.target); // Animates only once
                 }
             });
         }, observerOptions);
@@ -101,6 +102,118 @@ document.addEventListener('DOMContentLoaded', () => {
         animatedElements.forEach(element => {
             element.classList.add('revealed');
         });
+    }
+
+    // ==========================================================================
+    // CHARGEMENT DYNAMIQUE DES ACTUALITÉS
+    // ==========================================================================
+    const actualitesGrid = document.querySelector('.actualites-grid');
+    if (actualitesGrid) {
+        fetch('actualites.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erreur lors du chargement de actualites.html');
+                }
+                return response.text();
+            })
+            .then(htmlText => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(htmlText, 'text/html');
+                const actuElements = doc.querySelectorAll('.actualite');
+                
+                // Vider le conteneur statique
+                actualitesGrid.innerHTML = '';
+                
+                let loadedCount = 0;
+                actuElements.forEach(el => {
+                    if (loadedCount >= 6) return;
+                    
+                    const titre = el.querySelector('.titre')?.innerHTML.trim() || '';
+                    // Si rien n'est écrit dans le titre, on ne l'affiche pas
+                    if (!titre) return;
+                    
+                    const decor = el.querySelector('.decor')?.textContent.trim() || 'wine';
+                    const badge = el.querySelector('.badge')?.innerHTML.trim() || '';
+                    const texte = el.querySelector('.texte')?.innerHTML.trim() || '';
+                    const infoMiseEnValeur = el.querySelector('.info-mise-en-valeur')?.innerHTML.trim() || '';
+                    const lienUrl = el.querySelector('.lien-url')?.textContent.trim() || '';
+                    const lienTexte = el.querySelector('.lien-texte')?.innerHTML.trim() || '';
+                    
+                    // Création de l'élément de carte
+                    const card = document.createElement('div');
+                    card.className = 'actu-card animate-on-scroll';
+                    
+                    // Choix de la classe de décor et du libellé par défaut
+                    let decorClass = 'font-decor-wine';
+                    let decorLabel = 'Anjou';
+                    
+                    if (decor === 'apogee') {
+                        decorClass = 'font-decor-apogee';
+                        decorLabel = 'Apogée';
+                    } else if (decor === 'chateau') {
+                        decorClass = 'font-decor-chateau';
+                        decorLabel = "Château d'Angers";
+                    } else if (decor === 'epire') {
+                        decorClass = 'font-decor-epire';
+                        decorLabel = 'Épiré';
+                    } else if (decor && decor !== 'wine') {
+                        decorLabel = decor.charAt(0).toUpperCase() + decor.slice(1);
+                    }
+                    
+                    let cardHtml = `
+                        <div class="actu-card-media ${decorClass}">${decorLabel}</div>
+                        <div class="actu-card-content">
+                    `;
+                    
+                    if (badge) {
+                        cardHtml += `    <span class="actu-card-badge">${badge}</span>`;
+                    }
+                    
+                    cardHtml += `    <h3 class="actu-card-title">${titre}</h3>`;
+                    
+                    if (texte) {
+                        cardHtml += `    <p class="actu-card-text">${texte}</p>`;
+                    }
+                    
+                    if (infoMiseEnValeur) {
+                        cardHtml += `    <div class="actu-highlight-info">${infoMiseEnValeur}</div>`;
+                    }
+                    
+                    if (lienUrl && lienTexte) {
+                        cardHtml += `
+                            <div class="actu-card-footer">
+                                <a href="${lienUrl}" class="btn-text-link" target="_blank" rel="noopener">
+                                    <span>${lienTexte}</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </a>
+                            </div>
+                        `;
+                    }
+                    
+                    cardHtml += `</div>`;
+                    card.innerHTML = cardHtml;
+                    
+                    actualitesGrid.appendChild(card);
+                    
+                    // Observation de la nouvelle carte pour l'animation
+                    if (observer) {
+                        observer.observe(card);
+                    } else {
+                        card.classList.add('revealed');
+                    }
+                    
+                    loadedCount++;
+                });
+            })
+            .catch(err => {
+                console.error('Erreur lors du chargement des actualités:', err);
+                actualitesGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--color-text-muted);">Erreur lors du chargement des actualités.</p>';
+            });
     }
 
     // ==========================================================================
