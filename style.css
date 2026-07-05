@@ -2423,71 +2423,245 @@ img {
 }
 
 @media (max-width: 768px) {
+    /* Scale down all rem-based layouts by reducing root font-size */
+    html {
+        font-size: 13.5px;
+    }
+
+    /* Reduce default margins and paddings globally on mobile */
+    .section-actualites-monde,
+    .section-formations,
+    .section-organisation,
+    .section-deroulement,
+    .section-qui-sommes-nous,
+    .section-documents,
+    .section-contact {
+        padding: 2rem 0 !important;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    /* Hero section size reductions */
+    .hero-section {
+        height: auto;
+        min-height: 480px;
+        padding: 6rem 1rem 4rem;
+        background-attachment: scroll; /* improves mobile scroll performance */
+    }
+
+    .hero-title {
+        font-size: 2.2rem !important;
+        line-height: 1.2;
+    }
+
+    .hero-lead {
+        font-size: 1.15rem !important;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-meta {
+        margin-bottom: 2rem;
+    }
+
+    .hero-actions {
+        gap: 0.75rem;
+    }
+
+    .hero-actions .btn {
+        padding: 0.6rem 1.25rem;
+        font-size: 0.85rem;
+        width: 100%; /* stack buttons on very small screens for readability */
+        max-width: 280px;
+        margin: 0 auto;
+    }
+
+    .hero-scroll-indicator {
+        display: none; /* hide scroll mouse on mobile */
+    }
+
+    /* Grids & layouts gaps */
     .en-bref-grid {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1.5rem;
     }
 
     .en-bref-image-box {
-        height: 200px;
+        height: 180px;
     }
 
-    .qsn-media-row {
+    .en-bref-wrapper {
+        padding: 1.5rem 1.25rem;
+    }
+
+    .formations-intro-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
-        margin-bottom: 2.5rem;
+        margin-bottom: 3rem;
     }
 
-    .qsn-media-img {
-        height: 220px;
+    .quality-subpoints {
+        padding: 1.75rem 1.25rem;
+        margin-bottom: 3rem;
+    }
+
+    .quality-grid {
+        gap: 1.5rem;
+    }
+
+    .program-overview {
+        padding: 2.5rem 1.25rem;
+        margin-bottom: 3rem;
+    }
+
+    .program-themes-box-clean {
+        padding-top: 1.75rem;
     }
 
     .themes-structured-list {
         grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    /* Tasting steps vertical */
+    .tasting-steps-section {
+        padding: 2rem 1.25rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .seance-intro-block {
+        padding: 1.25rem 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .tasting-steps-vertical::before {
+        left: 14px;
+    }
+
+    .step-box-v {
+        gap: 1.25rem;
+        padding: 1rem;
+    }
+
+    .step-box-v .sb-num {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    /* Qui sommes nous cards padding */
+    .qsn-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .qsn-card {
+        padding: 2rem 1.25rem;
+    }
+
+    .qsn-media-row {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .qsn-media-img {
+        height: 200px;
+    }
+
+    /* Logistics & organisation */
+    .logistics-grid-with-img {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .logistics-card {
+        padding: 2rem 1.25rem;
+    }
+
+    .logistics-img {
+        height: 200px;
+    }
+
+    /* Documents lists */
+    .documents-grid {
+        grid-template-columns: 1fr;
         gap: 1rem;
+        margin-top: 1.5rem;
+    }
+
+    .doc-card {
+        padding: 1rem 1.25rem;
+        gap: 1rem;
+    }
+
+    .doc-icon-container {
+        width: 48px;
+        height: 48px;
+    }
+
+    .doc-icon-container svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    /* Actualités grid for mobile */
+    .actualites-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .actu-card-content {
+        padding: 1.5rem 1.25rem;
+    }
+
+    /* Contact page styling */
+    .contact-form-container {
+        padding: 2rem 1.25rem;
+    }
+
+    /* Age modal mobile size reduction */
+    .age-modal-content {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .age-modal-content h2 {
+        font-size: 1.6rem;
+    }
+
+    .age-modal-logo {
+        height: 55px;
+        margin-bottom: 1.25rem;
+    }
+
+    .age-modal-question {
+        font-size: 1.15rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .age-modal-buttons {
+        gap: 1rem;
+    }
+
+    .age-modal-buttons .btn {
+        width: 100%;
+        min-width: unset;
+        padding: 0.7rem 1.5rem;
     }
 
     .modules-table {
         display: none;
-        /* Hide table on small screens */
     }
 
     .modules-cards-mobile {
         display: flex;
-        /* Show card layout instead */
-    }
-
-    .program-overview {
-        padding: 3rem 1.5rem;
     }
 
     .modules-intro-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
-    }
-
-    .en-bref-wrapper {
-        padding: 1.5rem;
-    }
-
-    .quality-subpoints {
-        padding: 2rem 1.5rem;
-    }
-
-    .tasting-steps-section {
-        padding: 2rem 1.5rem;
-    }
-
-    .contact-form-container {
-        padding: 2rem 1.5rem;
-    }
-
-    .logistics-grid-with-img {
-        grid-template-columns: 1fr;
-    }
-
-    .logistics-img {
-        height: 220px;
     }
 }
 
