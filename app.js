@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 let loadedCount = 0;
                 actuElements.forEach(el => {
-                    if (loadedCount >= 6) return;
+                    if (loadedCount >= 8) return;
                     
                     const titre = el.querySelector('.titre')?.innerHTML.trim() || '';
                     // Si rien n'est écrit dans le titre, on ne l'affiche pas

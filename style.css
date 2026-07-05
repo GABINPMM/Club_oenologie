@@ -910,6 +910,21 @@ img {
     border-radius: var(--radius-lg);
     margin-bottom: 5rem;
     box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+}
+
+.program-bg {
+    background-image: url('images/wine_hero.png');
+    opacity: 0.15;
+    width: 100%;
+}
+
+.program-title-top,
+.program-modules-list,
+.program-themes-box-clean {
+    position: relative;
+    z-index: 2;
 }
 
 .program-title-top {
@@ -1234,6 +1249,22 @@ img {
     padding: 3rem;
     box-shadow: var(--shadow-sm);
     margin-bottom: 3.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.seance-bg {
+    background-image: url('images/wine_hero.png');
+    opacity: 0.15;
+    width: 100%;
+}
+
+.seance-intro-block,
+.tasting-steps-intro,
+.tasting-steps-vertical,
+.tasting-additional-details {
+    position: relative;
+    z-index: 2;
 }
 
 .tasting-steps-title {
@@ -1556,8 +1587,8 @@ img {
 
 .actualites-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
-    gap: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+    gap: 2rem;
 }
 
 .actu-card {
@@ -1578,14 +1609,14 @@ img {
 }
 
 .actu-card-media {
-    height: 140px;
+    height: 100px;
     background-color: var(--color-burgundy-primary);
     color: rgba(250, 246, 240, 0.15);
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: var(--font-heading);
-    font-size: 4rem;
+    font-size: 2.5rem;
     font-weight: 700;
     letter-spacing: 0.05em;
     user-select: none;
@@ -1610,7 +1641,7 @@ img {
 .font-decor-epire { background: linear-gradient(135deg, #6e583c, #917753); }
 
 .actu-card-content {
-    padding: 2.5rem;
+    padding: 1.75rem;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -1626,28 +1657,28 @@ img {
     padding: 0.25rem 0.75rem;
     border-radius: var(--radius-sm);
     align-self: flex-start;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
 }
 
 .actu-card-title {
-    font-size: 1.6rem;
+    font-size: 1.35rem;
     color: var(--color-burgundy-primary);
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
 }
 
 .actu-card-text {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     color: var(--color-text-muted);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .actu-highlight-info {
     background-color: var(--color-cream-bg);
     border-left: 3px solid var(--color-gold-primary);
-    padding: 1.25rem;
-    font-size: 0.9rem;
+    padding: 1rem;
+    font-size: 0.85rem;
     color: var(--color-text-main);
-    margin-bottom: 2rem;
+    margin-bottom: 1.25rem;
     border-radius: 0 var(--radius-md) var(--radius-md) 0;
 }
 
@@ -1661,7 +1692,7 @@ img {
 .actu-card-footer {
     margin-top: auto;
     border-top: 1px solid var(--color-border-light);
-    padding-top: 1.5rem;
+    padding-top: 1.25rem;
 }
 
 /* ==========================================================================
