@@ -3,31 +3,31 @@
    ========================================================================== */
 
 :root {
-    /* Color Palette */
-    --color-burgundy-primary: #58111a;
-    --color-burgundy-hover: #731e2a;
-    --color-burgundy-dark: #3a080e;
-    --color-burgundy-light: #f7eef0;
+    /* Color Palette - Wine Inspired */
+    --color-burgundy-primary: #6b1522; /* Rich Bordeaux red */
+    --color-burgundy-hover: #8d2334;   /* Warm Ruby hover */
+    --color-burgundy-dark: #420912;    /* Deep aging vat dark bordeaux */
+    --color-burgundy-light: #fcf2f4;   /* Very soft Rosé blush background */
 
-    --color-gold-primary: #c5a880;
-    --color-gold-hover: #a68c67;
-    --color-gold-light: #e8ded1;
-    --color-gold-dark: #917753;
+    --color-gold-primary: #cda16e;     /* Warm oak barrel / chardonnay gold */
+    --color-gold-hover: #b88a53;       /* Aged amber gold */
+    --color-gold-light: #f4eadc;       /* Pale straw gold highlight */
+    --color-gold-dark: #9c7243;        /* Deep cork / oak tan */
 
-    --color-cream-bg: #faf6f0;
+    --color-cream-bg: #f8f4ec;         /* Vintage wine label / parchment cream */
     --color-cream-card: #ffffff;
-    --color-cream-dark: #f0e6da;
+    --color-cream-dark: #f0e8da;       /* Soft cork / aging cellar tan */
 
-    --color-dark-bg: #1e1516;
-    --color-dark-card: #2c1f21;
+    --color-dark-bg: #1c0d10;          /* Deep grape skins / wine lees black */
+    --color-dark-card: #2a171a;        /* Dark grape skin chocolate-brown */
 
-    --color-text-main: #2e2728;
-    --color-text-muted: #6b5c5e;
-    --color-text-light: #faf6f0;
-    --color-text-gold: #d6be9c;
+    --color-text-main: #332729;        /* Warm charcoal with a hint of grape */
+    --color-text-muted: #735d60;       /* Muted grape skin gray-brown */
+    --color-text-light: #f8f4ec;
+    --color-text-gold: #d8c4ad;        /* Pale gold label text */
 
-    --color-border: #e2d7cc;
-    --color-border-light: #f0e6db;
+    --color-border: #e5dacd;           /* Soft barrel staves lines */
+    --color-border-light: #f1e7da;
 
     --color-success: #2e7d32;
     --color-success-bg: #e8f5e9;
