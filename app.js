@@ -119,6 +119,14 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(htmlText => {
                 const parser = new DOMParser();
                 const doc = parser.parseFromString(htmlText, 'text/html');
+
+                // Charger le bloc "EN BREF" dynamiquement
+                const enBrefSource = doc.getElementById('en-bref-source');
+                const enBrefTarget = document.getElementById('en-bref-text-container');
+                if (enBrefSource && enBrefTarget) {
+                    enBrefTarget.innerHTML = enBrefSource.innerHTML;
+                }
+
                 const actuElements = doc.querySelectorAll('.actualite');
 
                 // Vider le conteneur statique
