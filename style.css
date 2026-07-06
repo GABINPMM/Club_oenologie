@@ -4,24 +4,32 @@
 
 :root {
     /* Color Palette - Deeper Red Wine and Rich White Wine Gold */
-    --color-burgundy-primary: #5c0612; /* Deep merlot red */
-    --color-burgundy-hover: #7b0d1e;   /* Vibrant bordeaux red */
-    --color-burgundy-dark: #3b020a;    /* Deep syrah dregs */
-    --color-burgundy-light: #fbecee;   /* Soft rosé blush */
+    --color-burgundy-primary: #5c0612;
+    /* Deep merlot red */
+    --color-burgundy-hover: #7b0d1e;
+    /* Vibrant bordeaux red */
+    --color-burgundy-dark: #3b020a;
+    /* Deep syrah dregs */
+    --color-burgundy-light: #fbecee;
+    /* Soft rosé blush */
 
-    --color-gold-primary: #cca762;     /* Rich chardonnay gold */
+    --color-gold-primary: #cca762;
+    /* Rich chardonnay gold */
     --color-gold-hover: #b08d4b;
     --color-gold-light: #f3ebd8;
     --color-gold-dark: #846835;
 
-    --color-cream-bg: #fdfaf4;         /* Warm grape flesh ivory */
+    --color-cream-bg: #fdfaf4;
+    /* Warm grape flesh ivory */
     --color-cream-card: #ffffff;
     --color-cream-dark: #f5eedf;
 
-    --color-dark-bg: #1c0a0c;          /* Grapeskin black-purple */
+    --color-dark-bg: #1c0a0c;
+    /* Grapeskin black-purple */
     --color-dark-card: #2c1417;
 
-    --color-text-main: #2b1d20;        /* Deep wine-dregs charcoal */
+    --color-text-main: #2b1d20;
+    /* Deep wine-dregs charcoal */
     --color-text-muted: #6b5c5e;
     --color-text-light: #fdfaf4;
     --color-text-gold: #cca762;
@@ -1777,6 +1785,198 @@ img {
     padding-top: 1.25rem;
 }
 
+/* Bandeau-titre pastel pour les cartes actualités (remplace actu-card-media) */
+.actu-card-titre-band {
+    padding: 1.1rem 1.5rem;
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.35;
+    border-bottom: 3px solid transparent;
+}
+
+.actu-titre-band-wine {
+    background-color: #f5e6ea;
+    border-bottom-color: #c0394a;
+    color: #5c0612;
+}
+
+.actu-titre-band-apogee {
+    background-color: #ede0f0;
+    border-bottom-color: #8e44ad;
+    color: #5a2b6e;
+}
+
+.actu-titre-band-chateau {
+    background-color: #e0eaf5;
+    border-bottom-color: #2d6fa4;
+    color: #1a4a72;
+}
+
+.actu-titre-band-epire {
+    background-color: #f0ece0;
+    border-bottom-color: #9a7d45;
+    color: #6b5626;
+}
+
+/* Paragraphe EN BREF sous le titre de la section actualités */
+.section-en-bref {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.05rem;
+    color: var(--color-text-muted);
+    background-color: var(--color-cream-card);
+    border-left: 4px solid var(--color-gold-primary);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    padding: 0.9rem 1.5rem;
+    margin-bottom: 0;
+}
+
+.section-en-bref strong {
+    color: var(--color-burgundy-primary);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+/* Liste à puces des thèmes dans le module œnologie */
+.module-themes-list {
+    list-style: disc;
+    padding-left: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+}
+
+.module-themes-list li {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    display: list-item;
+}
+
+/* Pavé Capacité du Club */
+.capacite-club-box {
+    background: linear-gradient(135deg, var(--color-burgundy-light) 0%, #f8ecee 100%);
+    border: 1px solid rgba(92, 6, 18, 0.15);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem 2rem;
+    margin-top: 2rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.capacite-club-title {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color-burgundy-primary);
+    margin-bottom: 1.25rem;
+    text-align: center;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(92, 6, 18, 0.15);
+}
+
+.capacite-club-items {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.capacite-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.25rem;
+}
+
+.capacite-number {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-burgundy-primary);
+    line-height: 1;
+}
+
+.capacite-label {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.capacite-label small {
+    font-size: 0.75rem;
+    font-style: italic;
+    display: block;
+}
+
+.capacite-separator {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-gold-dark);
+    background-color: var(--color-gold-light);
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* Capacité du Club — version compacte inline dans la liste */
+.capacite-inline-item {
+    padding: 0;
+}
+
+.capacite-inline-box {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--color-burgundy-light);
+    border-left: 3px solid var(--color-burgundy-primary);
+    border-radius: var(--radius-sm);
+    padding: 0.55rem 0.9rem;
+}
+
+.capacite-inline-title {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-burgundy-primary);
+    margin-right: 0.25rem;
+}
+
+.capacite-inline-chip {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-burgundy-dark);
+    background-color: rgba(255,255,255,0.7);
+    border: 1px solid rgba(92, 6, 18, 0.15);
+    border-radius: var(--radius-full);
+    padding: 0.15rem 0.65rem;
+}
+
+.capacite-inline-sep {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--color-gold-dark);
+    background-color: var(--color-gold-light);
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
 /* ==========================================================================
    SECTION QUI SOMMES NUS
    ========================================================================== */
@@ -1787,9 +1987,12 @@ img {
 
 .qsn-grid {
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-columns: 1fr;
     gap: 4rem;
     margin-bottom: 4rem;
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .qsn-card {
@@ -2445,6 +2648,7 @@ img {
 }
 
 @media (max-width: 768px) {
+
     /* Scale down all rem-based layouts by reducing root font-size */
     html {
         font-size: 13.5px;
@@ -2470,7 +2674,8 @@ img {
         height: auto;
         min-height: 480px;
         padding: 6rem 1rem 4rem;
-        background-attachment: scroll; /* improves mobile scroll performance */
+        background-attachment: scroll;
+        /* improves mobile scroll performance */
     }
 
     .hero-title {
@@ -2510,7 +2715,8 @@ img {
     }
 
     .hero-scroll-indicator {
-        display: none; /* hide scroll mouse on mobile */
+        display: none;
+        /* hide scroll mouse on mobile */
     }
 
     /* Grids & layouts gaps */
@@ -2825,6 +3031,7 @@ img {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);

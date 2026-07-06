@@ -3,7 +3,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // ==========================================================================
     // MOBILE NAVIGATION
     // ==========================================================================
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // STICKY HEADER & SCROLLSHRINK
     // ==========================================================================
     const header = document.getElementById('header');
-    
+
     const handleScroll = () => {
         if (window.scrollY > 50) {
             header.classList.add('shrink');
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // SCROLLSPY (Active section highlighting)
     // ==========================================================================
     const sections = document.querySelectorAll('section');
-    
+
     const scrollspy = () => {
         let currentSectionId = 'accueil';
         const scrollPosition = window.scrollY + 150; // offset for nav height and margin
@@ -120,65 +120,53 @@ document.addEventListener('DOMContentLoaded', () => {
                 const parser = new DOMParser();
                 const doc = parser.parseFromString(htmlText, 'text/html');
                 const actuElements = doc.querySelectorAll('.actualite');
-                
+
                 // Vider le conteneur statique
                 actualitesGrid.innerHTML = '';
-                
+
                 let loadedCount = 0;
                 actuElements.forEach(el => {
                     if (loadedCount >= 8) return;
-                    
+
                     const titre = el.querySelector('.titre')?.innerHTML.trim() || '';
                     // Si rien n'est écrit dans le titre, on ne l'affiche pas
                     if (!titre) return;
-                    
+
                     const decor = el.querySelector('.decor')?.textContent.trim() || 'wine';
                     const badge = el.querySelector('.badge')?.innerHTML.trim() || '';
                     const texte = el.querySelector('.texte')?.innerHTML.trim() || '';
                     const infoMiseEnValeur = el.querySelector('.info-mise-en-valeur')?.innerHTML.trim() || '';
                     const lienUrl = el.querySelector('.lien-url')?.textContent.trim() || '';
                     const lienTexte = el.querySelector('.lien-texte')?.innerHTML.trim() || '';
-                    
+
                     // Création de l'élément de carte
                     const card = document.createElement('div');
                     card.className = 'actu-card animate-on-scroll';
-                    
-                    // Choix de la classe de décor et du libellé par défaut
-                    let decorClass = 'font-decor-wine';
-                    let decorLabel = 'Anjou';
-                    
+
+                    // Choix de la couleur pastel du bandeau-titre selon le décor
+                    let titreBandClass = 'actu-titre-band-wine';
                     if (decor === 'apogee') {
-                        decorClass = 'font-decor-apogee';
-                        decorLabel = 'Apogée';
+                        titreBandClass = 'actu-titre-band-apogee';
                     } else if (decor === 'chateau') {
-                        decorClass = 'font-decor-chateau';
-                        decorLabel = "Château d'Angers";
+                        titreBandClass = 'actu-titre-band-chateau';
                     } else if (decor === 'epire') {
-                        decorClass = 'font-decor-epire';
-                        decorLabel = 'Épiré';
-                    } else if (decor && decor !== 'wine') {
-                        decorLabel = decor.charAt(0).toUpperCase() + decor.slice(1);
+                        titreBandClass = 'actu-titre-band-epire';
                     }
-                    
+
+                    // Le titre est affiché dans un rectangle coloré pastel (sans libellé décoratif ni badge séparé)
                     let cardHtml = `
-                        <div class="actu-card-media ${decorClass}">${decorLabel}</div>
+                        <div class="actu-card-titre-band ${titreBandClass}">${titre}</div>
                         <div class="actu-card-content">
                     `;
-                    
-                    if (badge) {
-                        cardHtml += `    <span class="actu-card-badge">${badge}</span>`;
-                    }
-                    
-                    cardHtml += `    <h3 class="actu-card-title">${titre}</h3>`;
-                    
+
                     if (texte) {
                         cardHtml += `    <p class="actu-card-text">${texte}</p>`;
                     }
-                    
+
                     if (infoMiseEnValeur) {
                         cardHtml += `    <div class="actu-highlight-info">${infoMiseEnValeur}</div>`;
                     }
-                    
+
                     if (lienUrl && lienTexte) {
                         cardHtml += `
                             <div class="actu-card-footer">
@@ -194,19 +182,19 @@ document.addEventListener('DOMContentLoaded', () => {
                             </div>
                         `;
                     }
-                    
+
                     cardHtml += `</div>`;
                     card.innerHTML = cardHtml;
-                    
+
                     actualitesGrid.appendChild(card);
-                    
+
                     // Observation de la nouvelle carte pour l'animation
                     if (observer) {
                         observer.observe(card);
                     } else {
                         card.classList.add('revealed');
                     }
-                    
+
                     loadedCount++;
                 });
             })
@@ -225,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (contactForm && formStatus) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            
+
             // Gather form data
             const name = document.getElementById('contactName').value.trim();
             const email = document.getElementById('contactEmail').value.trim();
@@ -270,7 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
         formStatus.textContent = message;
         formStatus.className = `form-status-message ${type}`;
         formStatus.style.display = 'block';
-        
+
         // Scroll to status message on mobile so user sees it
         if (window.innerWidth < 768) {
             formStatus.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
