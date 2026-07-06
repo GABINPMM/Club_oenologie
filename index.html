@@ -755,6 +755,16 @@
                             <textarea id="contactComments" name="comments" rows="5" required
                                 placeholder="Saisissez votre message ici..."></textarea>
                         </div>
+                        <div class="form-group" style="display:none !important;">
+                            <label for="contactWebsite">Website (Ne pas remplir si vous êtes humain) :</label>
+                            <input type="text" id="contactWebsite" name="website" autocomplete="off">
+                        </div>
+                        <div class="form-group form-rgpd" style="display: flex; align-items: flex-start; gap: 0.5rem; margin-top: 1rem;">
+                            <input type="checkbox" id="rgpdConsent" name="rgpd_consent" required style="margin-top: 0.35rem; cursor: pointer;">
+                            <label for="rgpdConsent" class="rgpd-label" style="font-size: 0.85rem; color: var(--color-text-muted); cursor: pointer; user-select: none; line-height: 1.4;">
+                                J'accepte que mes données saisies soient transmises et traitées par le Club Œnologie d'Angers pour répondre à ma demande de contact conformément au RGPD.
+                            </label>
+                        </div>
                         <div class="form-buttons">
                             <button type="submit" class="btn btn-primary" id="btnSubmit">Envoyer</button>
                             <button type="reset" class="btn btn-outline" id="btnReset">Annuler</button>

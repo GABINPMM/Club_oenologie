@@ -240,18 +240,41 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Simulate sending message
+            // Build form data
+            const formData = new FormData(contactForm);
+
             const btnSubmit = document.getElementById('btnSubmit');
             const originalBtnText = btnSubmit.textContent;
             btnSubmit.textContent = 'Envoi en cours...';
             btnSubmit.disabled = true;
 
-            setTimeout(() => {
-                showFormStatus(`Merci ${name} ! Votre message concernant "${subject}" a bien été envoyé. Nous vous répondrons très rapidement sur votre adresse ${email}.`, 'success');
-                contactForm.reset();
+            // Envoi des données vers le script PHP
+            fetch('send_mail.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erreur réseau lors de la communication avec le serveur.');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.status === 'success') {
+                    showFormStatus(`Merci ${name} ! Votre message a bien été envoyé. Nous vous répondrons rapidement.`, 'success');
+                    contactForm.reset();
+                } else {
+                    showFormStatus(data.message || 'Une erreur est survenue.', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Erreur:', error);
+                showFormStatus('Une erreur technique est survenue lors de l\'envoi. Veuillez utiliser directement notre e-mail oenocapucins@gmail.com.', 'error');
+            })
+            .finally(() => {
                 btnSubmit.textContent = originalBtnText;
                 btnSubmit.disabled = false;
-            }, 1200);
+            });
         });
 
         // Hide form status when resetting
