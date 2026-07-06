@@ -3,31 +3,31 @@
    ========================================================================== */
 
 :root {
-    /* Color Palette - Wine Inspired */
-    --color-burgundy-primary: #6b1522; /* Rich Bordeaux red */
-    --color-burgundy-hover: #8d2334;   /* Warm Ruby hover */
-    --color-burgundy-dark: #420912;    /* Deep aging vat dark bordeaux */
-    --color-burgundy-light: #fcf2f4;   /* Very soft Rosé blush background */
+    /* Color Palette - Deeper Red Wine and Rich White Wine Gold */
+    --color-burgundy-primary: #5c0612; /* Deep merlot red */
+    --color-burgundy-hover: #7b0d1e;   /* Vibrant bordeaux red */
+    --color-burgundy-dark: #3b020a;    /* Deep syrah dregs */
+    --color-burgundy-light: #fbecee;   /* Soft rosé blush */
 
-    --color-gold-primary: #cda16e;     /* Warm oak barrel / chardonnay gold */
-    --color-gold-hover: #b88a53;       /* Aged amber gold */
-    --color-gold-light: #f4eadc;       /* Pale straw gold highlight */
-    --color-gold-dark: #9c7243;        /* Deep cork / oak tan */
+    --color-gold-primary: #cca762;     /* Rich chardonnay gold */
+    --color-gold-hover: #b08d4b;
+    --color-gold-light: #f3ebd8;
+    --color-gold-dark: #846835;
 
-    --color-cream-bg: #f8f4ec;         /* Vintage wine label / parchment cream */
+    --color-cream-bg: #fdfaf4;         /* Warm grape flesh ivory */
     --color-cream-card: #ffffff;
-    --color-cream-dark: #f0e8da;       /* Soft cork / aging cellar tan */
+    --color-cream-dark: #f5eedf;
 
-    --color-dark-bg: #1c0d10;          /* Deep grape skins / wine lees black */
-    --color-dark-card: #2a171a;        /* Dark grape skin chocolate-brown */
+    --color-dark-bg: #1c0a0c;          /* Grapeskin black-purple */
+    --color-dark-card: #2c1417;
 
-    --color-text-main: #332729;        /* Warm charcoal with a hint of grape */
-    --color-text-muted: #735d60;       /* Muted grape skin gray-brown */
-    --color-text-light: #f8f4ec;
-    --color-text-gold: #d8c4ad;        /* Pale gold label text */
+    --color-text-main: #2b1d20;        /* Deep wine-dregs charcoal */
+    --color-text-muted: #6b5c5e;
+    --color-text-light: #fdfaf4;
+    --color-text-gold: #cca762;
 
-    --color-border: #e5dacd;           /* Soft barrel staves lines */
-    --color-border-light: #f1e7da;
+    --color-border: #e8decb;
+    --color-border-light: #f5edd7;
 
     --color-success: #2e7d32;
     --color-success-bg: #e8f5e9;
