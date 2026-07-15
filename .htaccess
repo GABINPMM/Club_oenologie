@@ -8,16 +8,10 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 # ==========================================================================
 # EN-TÊTES DE SÉCURITÉ (SECURITY HEADERS)
 # ==========================================================================
+
 <IfModule mod_headers.c>
-    # Empêcher le site d'être intégré dans une iframe externe (Protection Clickjacking)
     Header set X-Frame-Options "SAMEORIGIN"
-
-    # Protéger contre le reniflage de type MIME (MIME-Sniffing protection)
     Header set X-Content-Type-Options "nosniff"
-
-    # Restreindre le referrer envoyé aux domaines tiers pour protéger la vie privée
     Header set Referrer-Policy "strict-origin-when-cross-origin"
-
-    # Activer le filtre XSS intégré aux navigateurs plus anciens
     Header set X-XSS-Protection "1; mode=block"
 </IfModule>

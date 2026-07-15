@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-# Sitemap URL (Remplacez par le nom de domaine définitif)
+# Il faut remplacer par le nom de domaine définitif
 Sitemap: http://www.oenologie-angers.com/sitemap.xml
