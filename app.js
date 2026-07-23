@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================================================
-    // CHARGEMENT DYNAMIQUE DES ACTUALITÉS
+    // CHARGEMENT DYNAMIQUE DES ACTUALITÃ‰S
     // ==========================================================================
     const actualitesGrid = document.querySelector('.actualites-grid');
     if (actualitesGrid) {
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (loadedCount >= 8) return;
 
                     const titre = el.querySelector('.titre')?.innerHTML.trim() || '';
-                    // Si rien n'est écrit dans le titre, on ne l'affiche pas
+                    // Si rien n'est Ã©crit dans le titre, on ne l'affiche pas
                     if (!titre) return;
 
                     const decor = el.querySelector('.decor')?.textContent.trim() || 'wine';
@@ -147,11 +147,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     const lienUrl = el.querySelector('.lien-url')?.textContent.trim() || '';
                     const lienTexte = el.querySelector('.lien-texte')?.innerHTML.trim() || '';
 
-                    // Création de l'élément de carte
+                    // CrÃ©ation de l'Ã©lÃ©ment de carte
                     const card = document.createElement('div');
                     card.className = 'actu-card animate-on-scroll';
 
-                    // Choix de la couleur pastel du bandeau-titre selon le décor
+                    // Choix de la couleur pastel du bandeau-titre selon le dÃ©cor
                     let titreBandClass = 'actu-titre-band-wine';
                     if (decor === 'apogee') {
                         titreBandClass = 'actu-titre-band-apogee';
@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         titreBandClass = 'actu-titre-band-epire';
                     }
 
-                    // Le titre est affiché dans un rectangle coloré pastel (sans libellé décoratif ni badge séparé)
+                    // Le titre est affichÃ© dans un rectangle colorÃ© pastel (sans libellÃ© dÃ©coratif ni badge sÃ©parÃ©)
                     let cardHtml = `
                         <div class="actu-card-titre-band ${titreBandClass}">${titre}</div>
                         <div class="actu-card-content">
@@ -207,8 +207,77 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             })
             .catch(err => {
-                console.error('Erreur lors du chargement des actualités:', err);
-                actualitesGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--color-text-muted);">Erreur lors du chargement des actualités.</p>';
+                console.error('Erreur lors du chargement des actualitÃ©s:', err);
+                actualitesGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--color-text-muted);">Erreur lors du chargement des actualitÃ©s.</p>';
+            });
+    }
+
+    // ==========================================================================
+    // CHARGEMENT DYNAMIQUE DES FORMATIONS (tableau NOS FORMATIONS)
+    // ==========================================================================
+    const formationsTableauContainer = document.getElementById('formations-tableau-container');
+    const formationsPdfContainer    = document.getElementById('formations-pdf-container');
+
+    if (formationsTableauContainer) {
+        fetch('formations.html')
+            .then(response => {
+                if (!response.ok) throw new Error('Erreur lors du chargement de formations.html');
+                return response.text();
+            })
+            .then(htmlText => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(htmlText, 'text/html');
+
+                const tableauSource = doc.getElementById('formations-tableau-source');
+                if (tableauSource && formationsTableauContainer) {
+                    const modules = tableauSource.querySelectorAll('.module');
+
+                    let tableHtml = `<table class="modules-table">
+                        <thead><tr>
+                            <th>Module</th>
+                            <th>Dates &amp; Horaires</th>
+                            <th>Contenu</th>
+                            <th>Tarif</th>
+                        </tr></thead>
+                        <tbody>`;
+
+                    modules.forEach(m => {
+                        const nom     = m.querySelector('.nom')?.innerHTML.trim()     || '';
+                        const dates   = m.querySelector('.dates')?.innerHTML.trim()   || '';
+                        const contenu = m.querySelector('.contenu')?.innerHTML.trim() || '';
+                        const detail  = m.querySelector('.detail')?.innerHTML.trim()  || '';
+                        const tarif   = m.querySelector('.tarif')?.innerHTML.trim()   || '';
+
+                        if (!nom) return;
+
+                        tableHtml += `<tr>
+                            <td class="module-name-cell">${nom}</td>
+                            <td class="module-date-cell">${dates}</td>
+                            <td>
+                                <div class="cell-content">
+                                    <p>${contenu}</p>
+                                    ${detail ? `<p class="highlight-text">${detail}</p>` : ''}
+                                </div>
+                            </td>
+                            <td class="module-price-cell"><span class="price-badge">${tarif}</span></td>
+                        </tr>`;
+                    });
+
+                    tableHtml += `</tbody></table>`;
+                    formationsTableauContainer.innerHTML = tableHtml;
+
+                    // Bouton PDF
+                    if (formationsPdfContainer) {
+                        const pdfLien  = tableauSource.querySelector('.pdf-lien')?.textContent.trim()  || '';
+                        const pdfTexte = tableauSource.querySelector('.pdf-texte')?.textContent.trim() || '';
+                        if (pdfLien && pdfTexte) {
+                            formationsPdfContainer.innerHTML = `<a href="${pdfLien}" class="btn btn-primary" download>${pdfTexte}</a>`;
+                        }
+                    }
+                }
+            })
+            .catch(err => {
+                console.error('Erreur lors du chargement des formations:', err);
             });
     }
 
@@ -248,20 +317,20 @@ document.addEventListener('DOMContentLoaded', () => {
             btnSubmit.textContent = 'Envoi en cours...';
             btnSubmit.disabled = true;
 
-            // Envoi des données vers le script PHP
+            // Envoi des donnÃ©es vers le script PHP
             fetch('send_mail.php', {
                 method: 'POST',
                 body: formData
             })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Erreur réseau lors de la communication avec le serveur.');
+                    throw new Error('Erreur rÃ©seau lors de la communication avec le serveur.');
                 }
                 return response.json();
             })
             .then(data => {
                 if (data.status === 'success') {
-                    showFormStatus(`Merci ${name} ! Votre message a bien été envoyé. Nous vous répondrons rapidement.`, 'success');
+                    showFormStatus(`Merci ${name} ! Votre message a bien Ã©tÃ© envoyÃ©. Nous vous rÃ©pondrons rapidement.`, 'success');
                     contactForm.reset();
                 } else {
                     showFormStatus(data.message || 'Une erreur est survenue.', 'error');
@@ -297,14 +366,14 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // ==========================================================================
-    // CONFIRMATION DE L'ÂGE (18 ANS)
+    // CONFIRMATION DE L'Ã‚GE (18 ANS)
     // ==========================================================================
     const ageModal = document.getElementById('age-verification-modal');
     const ageVerifyYes = document.getElementById('age-verify-yes');
     const ageVerifyNo = document.getElementById('age-verify-no');
 
     if (ageModal) {
-        // Vérifier si le choix a déjà été enregistré dans localStorage
+        // VÃ©rifier si le choix a dÃ©jÃ  Ã©tÃ© enregistrÃ© dans localStorage
         const isVerified = localStorage.getItem('age-verified') === 'true';
 
         if (isVerified) {
