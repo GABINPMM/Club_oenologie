@@ -1403,7 +1403,7 @@ img {
 }
 
 .logistics-card {
-    background-color: var(--color-cream-bg);
+    background-color: var(--color-cream-card);
     border: 1px solid var(--color-border-light);
     padding: 3rem;
     border-radius: var(--radius-lg);
@@ -2534,7 +2534,7 @@ img {
     color: var(--color-text-main);
 }
 
-.form-group input,
+.form-group input:not([type="checkbox"]),
 .form-group textarea {
     font-family: var(--font-body);
     font-size: 0.95rem;
@@ -2555,10 +2555,44 @@ img {
     box-shadow: 0 0 0 3px rgba(88, 17, 26, 0.08);
 }
 
+/* Style de la case à cocher RGPD */
+.form-group.form-rgpd {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.85rem;
+    margin-top: 0.75rem;
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+
+.form-group.form-rgpd input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    min-height: 22px;
+    margin-top: 2px;
+    cursor: pointer;
+    accent-color: var(--color-burgundy-primary);
+    flex-shrink: 0;
+}
+
+.form-group.form-rgpd .rgpd-label {
+    font-size: 0.95rem;
+    color: var(--color-text-main);
+    cursor: pointer;
+    user-select: none;
+    line-height: 1.45;
+    text-align: left;
+    font-weight: 400;
+}
+
 .form-buttons {
     display: flex;
     gap: 1rem;
     margin-top: 1rem;
+    justify-content: flex-start;
 }
 
 /* Contact Info Sidebar */
